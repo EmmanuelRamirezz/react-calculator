@@ -1,27 +1,35 @@
 
 import './App.css';
-import calcLogo from './assets/calcLogo.png';
+
+import Logo from './components/Logo'
 import Button from './components/Button';
 import Screen from './components/Screen';
 import ClearBtn from './components/ClearBtn';
 import {useState} from 'react';
+//instalar paquete externo para usar la funcion evaluate
+import {evaluate} from 'mathjs';
 
 
 function App() {
   const [input, setInput] = useState('');
+
+  //agrega el input a pantalla a travexz de useState
   const addInput = val => {
     setInput(input + val);
+  };
+  //Calcula el resultado
+  const resultCalc = () => {
+    if(input!==''){
+      setInput(evaluate(input)); //tambien se puede con eval()
+    }else{
+      alert('no ingresaste ningun valor');
+    }
+
   };
 
   return (
     <div className='App'>
-      <div className='calc-logo--container'>
-      <img
-      src={calcLogo}
-      className='calc-logo'
-      alt = 'Calculatos logo' />
-      </div>
-
+      <Logo/>
       <div className='calculator-container'>
         <Screen
         //props
@@ -47,10 +55,12 @@ function App() {
           <Button clickHandler={addInput}>*</Button>
         </div>
         <div className='row'>
-          <Button clickHandler={addInput}>=</Button>
-          <Button clickHandler={addInput}>0</Button>
+
           <Button clickHandler={addInput}>.</Button>
+          <Button clickHandler={addInput}>0</Button>
+          <Button clickHandler={resultCalc}>=</Button>
           <Button clickHandler={addInput}>/</Button>
+
         </div>
         <div className='row'>
           <ClearBtn clickHandler={() => setInput('')}>
