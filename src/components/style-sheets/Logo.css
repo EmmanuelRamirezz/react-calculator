@@ -1,4 +1,7 @@
 /* Logo */
+
+
+/* Container */
 .calc-logo--container{
   width: 100%;
   height: 50px;
@@ -7,6 +10,23 @@
   justify-content: center;
   align-items: center;
 }
+/* Imagen */
 .calc-logo{
   height: 220px;
+}
+/* Responsive Design */
+@media(max-width:1024px){
+  .calc-logo{
+    height: 170px;
+  }
+}
+@media(max-width:720px){
+  .calc-logo{
+    height: 120px;
+  }
+}
+@media(max-width:480px){
+  .calc-logo{
+    height: 0px;
+  }
 }
